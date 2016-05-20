@@ -1,26 +1,28 @@
+package com.charltonHughes;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * Write a description of class MVPGUI here.
+ * Write a description of class MVPGui here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MVPGUI {
+public class MVPGui {
     private JFrame frame;
     private JLabel label;
     private JButton button1, button2, button3, button4, button5;
     private JPanel panel, panelLeft, panelRight, panel3;
     private JTextArea textArea, textAreaLeft, textAreaRight;
     private JScrollPane scrollArea;
-    private JTextField firstname, lastname, teamName;
+    private JTextField firstName, lastName, teamName;
 
     public String name;
 
     public static void main(String args[]) {
-        MVPGUI guiLayout = new MVPGUI();
+        MVPGui guiLayout = new MVPGui();
         guiLayout.start();
     }
 
@@ -39,19 +41,19 @@ public class MVPGUI {
 
         button1 = new JButton("Search by FIRST Name");
         panel.add(button1);
-        button1.addActionListener(new firstName());
+        button1.addActionListener(new FirstName());
 
         button2 = new JButton("Search by LAST Name");
         panel.add(button2);
-        button2.addActionListener(new lastName());
+        button2.addActionListener(new LastName());
 
         button3 = new JButton("Search by TEAM Name");
         panel.add(button3);
-        button3.addActionListener(new teamName());
+        button3.addActionListener(new TeamName());
 
         button4 = new JButton("CLEAR TEXT");
         panel.add(button4);
-        button4.addActionListener(new clearText());
+        button4.addActionListener(new ClearText());
 
 
         panel3 = new JPanel();
@@ -60,13 +62,13 @@ public class MVPGUI {
 
         JLabel first = new JLabel("first name");
         panel3.add(first);
-        firstname = new JTextField("", 3);
-        panel3.add(firstname);
+        firstName = new JTextField("", 3);
+        panel3.add(firstName);
 
         JLabel last = new JLabel("last name");
         panel3.add(last);
-        lastname = new JTextField("", 3);
-        panel3.add(lastname);
+        lastName = new JTextField("", 3);
+        panel3.add(lastName);
 
         JLabel team = new JLabel("team");
         panel3.add(team);
@@ -85,34 +87,34 @@ public class MVPGUI {
 
     String text;
 
-    private class firstName implements ActionListener {
+    private class FirstName implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            name = firstname.getText();
-            MVPDATA Search = new MVPDATA(name, 1);
+            name = firstName.getText();
+            MVPData Search = new MVPData(name, 1);
             textAreaRight.setText(Search.MVPList());
         }
     }
 
-    private class lastName implements ActionListener {
+    private class LastName implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            name = lastname.getText();
-            MVPDATA Search = new MVPDATA(name, 2);
+            name = lastName.getText();
+            MVPData Search = new MVPData(name, 2);
             textAreaRight.setText(Search.MVPList());
         }
     }
 
-    private class teamName implements ActionListener {
+    private class TeamName implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             name = teamName.getText();
-            MVPDATA Search = new MVPDATA(name, 3);
+            MVPData Search = new MVPData(name, 3);
             textAreaRight.setText(Search.MVPList());
         }
     }
 
-    private class clearText implements ActionListener {
+    private class ClearText implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            firstname.setText("");
-            lastname.setText("");
+            firstName.setText("");
+            lastName.setText("");
             teamName.setText("");
             textAreaRight.setText("");
         }

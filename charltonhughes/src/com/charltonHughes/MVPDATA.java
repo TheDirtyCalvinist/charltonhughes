@@ -37,7 +37,11 @@ public class MVPData {
                 }
 
                 cityName[i] = scan.next();
-                if (cityName[i].equals("Green") || cityName[i].equals("New") || cityName[i].equals("San") || cityName[i].equals("St.") || cityName[i].equals("Los")) {
+                if (cityName[i].equals("Green") ||
+                        cityName[i].equals("New") ||
+                        cityName[i].equals("San") ||
+                        cityName[i].equals("St.") ||
+                        cityName[i].equals("Los")) {
                     cityName[i] = cityName[i] + " " + scan.next();
                 }
                 teamName[i] = scan.next();
