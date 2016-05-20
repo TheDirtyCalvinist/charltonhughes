@@ -49,7 +49,7 @@ public class MVPData {
                 if (position[i].equals("Running") || position[i].equals("Defensive")) {
                     position[i] = position[i] + " " + scan.next();
                 }
-                i = i + 1;
+                i++;
             }
             scan.close();
         } catch (IOException e) {
@@ -61,21 +61,21 @@ public class MVPData {
 
     String MVPList() {
         if (searchType == 1) {
-            for (int x = 0; x < 55; x++) {
-                if (firstName[x].equals(name)){
-                    list = list + year[x] + " " + firstName[x] + " " + lastName[x] + " " + cityName[x] + "\n";
+            for (int i = 0; i < 55; i++) {
+                if (firstName[i].equals(name)){
+                    list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
                 }
             }
         } else if (searchType == 2) {
-            for (int x = 0; x < 55; x++) {
-                if (lastName[x].equals(name)){
-                    list = list + year[x] + " " + firstName[x] + " " + lastName[x] + " " + cityName[x] + "\n";
+            for (int i = 0; i < 55; i++) {
+                if (lastName[i].equals(name)){
+                    list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
                 }
             }
         } else {
-            for (int x = 0; x < 55; x++) {
-                if (cityName[x].equals(name)) {
-                    list = list + year[x] + " " + firstName[x] + " " + lastName[x] + " " + cityName[x] + "\n";
+            for (int i = 0; i < 55; i++) {
+                if (cityName[i].equals(name)) {
+                    list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
                 }
             }
         }
