@@ -20,9 +20,11 @@ public class MVPData {
     String position[] = new String[55];
     int i = 0;
     int count;
-    int searchType;
+    SearchType searchType;
 
-    MVPData(String n, int type) {
+    public enum SearchType {FIRST_NAME, LAST_NAME, TEAM_NAME}
+
+    MVPData(String n, SearchType type) {
         name = n;
         searchType = type;
 
@@ -60,26 +62,30 @@ public class MVPData {
     }
 
     String MVPList() {
-        if (searchType == 1) {
-            for (int i = 0; i < 55; i++) {
-                if (firstName[i].equals(name)){
-                    list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
+        switch (searchType){
+            case FIRST_NAME:
+                for (int i = 0; i < 55; i++) {
+                    if (firstName[i].equals(name)){
+                        list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
+                    }
                 }
-            }
-        } else if (searchType == 2) {
-            for (int i = 0; i < 55; i++) {
-                if (lastName[i].equals(name)){
-                    list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
+                break;
+            case LAST_NAME:
+                for (int i = 0; i < 55; i++) {
+                    if (lastName[i].equals(name)){
+                        list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
+                    }
                 }
-            }
-        } else {
-            for (int i = 0; i < 55; i++) {
-                if (cityName[i].equals(name)) {
-                    list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
+                break;
+            case TEAM_NAME:
+            default:
+                for (int i = 0; i < 55; i++) {
+                    if (cityName[i].equals(name)) {
+                        list = list + year[i] + " " + firstName[i] + " " + lastName[i] + " " + cityName[i] + "\n";
+                    }
                 }
-            }
+                break;
         }
-
 
         return list;
 
