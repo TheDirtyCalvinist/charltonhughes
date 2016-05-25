@@ -19,8 +19,6 @@ public class MVPGui {
     private JScrollPane scrollArea;
     private JTextField firstName, lastName, teamName;
 
-    public String name;
-
     public static void main(String args[]) {
         MVPGui guiLayout = new MVPGui();
         guiLayout.start();
@@ -41,15 +39,15 @@ public class MVPGui {
 
         button1 = new JButton("Search by FIRST Name");
         panel.add(button1);
-        button1.addActionListener(new FirstName());
+        button1.addActionListener(new FieldListener(firstName, MVPData.SearchType.FIRST_NAME, textAreaRight));
 
         button2 = new JButton("Search by LAST Name");
         panel.add(button2);
-        button2.addActionListener(new LastName());
+        button2.addActionListener(new FieldListener(lastName, MVPData.SearchType.FIRST_NAME, textAreaRight));
 
         button3 = new JButton("Search by TEAM Name");
         panel.add(button3);
-        button3.addActionListener(new TeamName());
+        button3.addActionListener(new FieldListener(teamName, MVPData.SearchType.FIRST_NAME, textAreaRight));
 
         button4 = new JButton("CLEAR TEXT");
         panel.add(button4);
@@ -85,29 +83,22 @@ public class MVPGui {
         frame.setVisible(true);
     }
 
-    String text;
+    private class FieldListener implements ActionListener {
 
-    private class FirstName implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            name = firstName.getText();
-            MVPData Search = new MVPData(name, MVPData.SearchType.FIRST_NAME);
-            textAreaRight.setText(Search.MVPList());
+        private final MVPData.SearchType searchType;
+        private final JTextField searchField;
+        private final JTextArea resultArea;
+
+        public FieldListener(JTextField searchField, MVPData.SearchType searchType, JTextArea resultArea){
+            this.searchField = searchField;
+            this.searchType = searchType;
+            this.resultArea = resultArea;
         }
-    }
 
-    private class LastName implements ActionListener {
+        @Override
         public void actionPerformed(ActionEvent e) {
-            name = lastName.getText();
-            MVPData Search = new MVPData(name, MVPData.SearchType.LAST_NAME);
-            textAreaRight.setText(Search.MVPList());
-        }
-    }
-
-    private class TeamName implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            name = teamName.getText();
-            MVPData Search = new MVPData(name, MVPData.SearchType.TEAM_NAME);
-            textAreaRight.setText(Search.MVPList());
+            MVPData search = new MVPData(searchField.getText(), searchType);
+            resultArea.setText(search.MVPList());
         }
     }
 
@@ -122,8 +113,3 @@ public class MVPGui {
 
 
 }
-    
-
-
-
-
