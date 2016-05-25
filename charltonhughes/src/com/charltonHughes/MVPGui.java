@@ -90,7 +90,7 @@ public class MVPGui {
     private class FirstName implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             name = firstName.getText();
-            MVPData Search = new MVPData(name, 1);
+            MVPData Search = new MVPData(name, MVPData.SearchType.FIRST_NAME);
             textAreaRight.setText(Search.MVPList());
         }
     }
@@ -98,7 +98,7 @@ public class MVPGui {
     private class LastName implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             name = lastName.getText();
-            MVPData Search = new MVPData(name, 2);
+            MVPData Search = new MVPData(name, MVPData.SearchType.LAST_NAME);
             textAreaRight.setText(Search.MVPList());
         }
     }
@@ -106,7 +106,7 @@ public class MVPGui {
     private class TeamName implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             name = teamName.getText();
-            MVPData Search = new MVPData(name, 3);
+            MVPData Search = new MVPData(name, MVPData.SearchType.TEAM_NAME);
             textAreaRight.setText(Search.MVPList());
         }
     }
