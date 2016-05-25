@@ -51,7 +51,15 @@ public class MVPGui {
 
         button4 = new JButton("CLEAR TEXT");
         panel.add(button4);
-        button4.addActionListener(new ClearText());
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                firstName.setText("");
+                lastName.setText("");
+                teamName.setText("");
+                textAreaRight.setText("");
+            }
+        });
 
 
         panel3 = new JPanel();
@@ -101,15 +109,5 @@ public class MVPGui {
             resultArea.setText(search.MVPList());
         }
     }
-
-    private class ClearText implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            firstName.setText("");
-            lastName.setText("");
-            teamName.setText("");
-            textAreaRight.setText("");
-        }
-    }
-
 
 }
